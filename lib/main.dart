@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pulse/Screens/HomeScreen.dart';
 
 import 'Screens/SplashScreen.dart';
 

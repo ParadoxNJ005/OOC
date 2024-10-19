@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
           _controller.value.isInitialized
               ? SizedBox.expand(
             child: FittedBox(
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
               child: SizedBox(
                 width: _controller.value.size.width,
                 height: _controller.value.size.height,

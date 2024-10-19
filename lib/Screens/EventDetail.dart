@@ -68,7 +68,7 @@ class _Eventdetail extends State<Eventdetail> {
                 children: [
                   // Back button
                   IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.white),
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
                     onPressed: () => Navigator.of(context).pop(),
                     color: Colors.black54,
                   ),
@@ -76,11 +76,11 @@ class _Eventdetail extends State<Eventdetail> {
                   Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.favorite_border, color: Colors.white),
+                        icon: const Icon(Icons.favorite_border, color: Colors.white),
                         onPressed: () {},
                       ),
                       IconButton(
-                        icon: Icon(Icons.share, color: Colors.white),
+                        icon: const Icon(Icons.share, color: Colors.white),
                         onPressed: () {},
                       ),
                     ],
@@ -93,10 +93,10 @@ class _Eventdetail extends State<Eventdetail> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.8),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
                 ),
@@ -112,7 +112,7 @@ class _Eventdetail extends State<Eventdetail> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'SHOW',
                             style: TextStyle(
                               color: Colors.white54,
@@ -122,13 +122,13 @@ class _Eventdetail extends State<Eventdetail> {
                           ),
                           Text(
                             widget.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 28,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text(
+                          const Text(
                             'Starting 9:10 PM',
                             style: TextStyle(
                               color: Colors.white54,
@@ -139,12 +139,12 @@ class _Eventdetail extends State<Eventdetail> {
                       ),
                       // Date Box
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.purpleAccent,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Column(
+                        child: const Column(
                           children: [
                             Text(
                               'DEC',
@@ -167,7 +167,7 @@ class _Eventdetail extends State<Eventdetail> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // About and Participants Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,35 +198,35 @@ class _Eventdetail extends State<Eventdetail> {
                             ),
                           ),
                           child: _isLoading
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
                           )
-                              : Text('Participants', style: TextStyle(color: Colors.grey)),
+                              : const Text('Participants', style: TextStyle(color: Colors.grey)),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   // Event Description and other UI elements
                   Text(
                     widget.des,
-                    style: TextStyle(color: Colors.white70, fontSize: 20),
+                    style: const TextStyle(color: Colors.white70, fontSize: 20),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Location Section
                   Text(
                     widget.venue,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   // Price and Buy Ticket Section
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.black54,
                       borderRadius: BorderRadius.circular(15),
@@ -234,42 +234,53 @@ class _Eventdetail extends State<Eventdetail> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'PRICE',
-                              style: TextStyle(
-                                color: Colors.white54,
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              '\$17.60/person',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        // const Column(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Text(
+                        //       'PRICE',
+                        //       style: TextStyle(
+                        //         color: Colors.white54,
+                        //         fontSize: 14,
+                        //       ),
+                        //     ),
+                        //     Text(
+                        //       '\$17.60/person',
+                        //       style: TextStyle(
+                        //         color: Colors.white,
+                        //         fontSize: 22,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                        // ElevatedButton(
+                        //   onPressed: () {},
+                        //   style: ElevatedButton.styleFrom(
+                        //     backgroundColor: Colors.purpleAccent,
+                        //     shape: RoundedRectangleBorder(
+                        //       borderRadius: BorderRadius.circular(20),
+                        //     ),
+                        //   ),
+                        //   child: const Row(
+                        //     children: [
+                        //       Text('BUY A TICKET'),
+                        //       SizedBox(width: 5),
+                        //       Icon(Icons.add_shopping_cart),
+                        //     ],
+                        //   ),
+                        // ),
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration:BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                          color: const Color(0xffFFD5D8),
                         ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purpleAccent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                        ElevatedButton(onPressed: (){},
+                            style: ButtonStyle(
+                              backgroundColor: Color(0xffFFD5D8)
                             ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text('BUY A TICKET'),
-                              SizedBox(width: 5),
-                              Icon(Icons.add_shopping_cart),
-                            ],
-                          ),
-                        ),
+                            child: const Text('BOOK'))
                       ],
                     ),
                   ),

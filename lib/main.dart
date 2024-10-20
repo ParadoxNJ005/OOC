@@ -4,6 +4,7 @@ import 'package:pulse/Screens/HomeScreen.dart';
 import 'package:pulse/Screens/MapScreen.dart';
 import 'package:pulse/Screens/SignUp.dart';
 import 'package:pulse/Screens/TimeLine.dart';
+import 'package:pulse/Screens/profile.dart';
 
 import 'Screens/SplashScreen.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Mapscreen(),
+      home: ProfileScreen(),
     );
   }
 }

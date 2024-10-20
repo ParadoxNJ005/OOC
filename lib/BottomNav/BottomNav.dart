@@ -3,7 +3,9 @@ import 'package:bottom_bar_matu/bottom_bar_double_bullet/bottom_bar_double_bulle
 import 'package:bottom_bar_matu/bottom_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pulse/Screens/EventDetail.dart';
 import 'package:pulse/Screens/HomeScreen.dart';
+import 'package:pulse/Screens/ReelsPage.dart';
 import 'package:pulse/Screens/TimeLine.dart';
 
 class BottomNav extends StatefulWidget {
@@ -14,12 +16,14 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int _currentIndex = 0;
+  int _currentIndex = 2;
 
   final List<Widget> _pages = [
     const HomeScreen(),
     const Timeline(),
-    // Add more screens here if necessary
+    const HomeScreen(),
+    const ReelPage(),
+    const EventDetailsPage(),
   ];
 
   void _onItemSelected(int index) {
@@ -35,28 +39,24 @@ class _BottomNavState extends State<BottomNav> {
       bottomNavigationBar: BottomBarDoubleBullet(
         selectedIndex: _currentIndex,
         items: [
-          // Home icon (example)
           BottomBarItem(
-            iconBuilder: (color) => _buildIcon(
-              'assets/icons/home_unselected.svg', // Unselected SVG
-              'assets/icons/home_selected.png',   // Selected PNG
-              0,
-              30.0,
-            ),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/a.svg", "assets/images/a.svg", 0, 34),
           ),
-          // Timeline icon (example)
           BottomBarItem(
-            iconBuilder: (color) => _buildIcon(
-              'assets/icons/timeline_unselected.svg', // Unselected SVG
-              'assets/icons/timeline_selected.png',   // Selected PNG
-              1,
-              30.0,
-            ),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/b.svg", "assets/images/b.svg", 1, 30),
           ),
-          // Add more BottomBarItems for additional tabs if needed
+          BottomBarItem(
+            iconBuilder: (color) => _buildIcon("assets/images/c.svg", "assets/images/c.svg", 2, 37),
+          ),
+          BottomBarItem(
+            iconBuilder: (color) => _buildSvgIcon("assets/images/b.svg", "assets/images/b.svg" , 3, 25),
+          ),
+          BottomBarItem(
+            iconBuilder: (color) => _buildSvgIcon("assets/images/a.svg", "assets/images/a.svg", 4, 34),
+          ),
         ],
         circle1Color: Colors.blueAccent,
-        backgroundColor: const Color.fromRGBO(39, 29, 29, 1),
+        backgroundColor: Colors.black,
         color: const Color.fromRGBO(238, 66, 116, 1),
         bubbleSize: 40,
         onSelect: _onItemSelected,
@@ -64,7 +64,16 @@ class _BottomNavState extends State<BottomNav> {
     );
   }
 
-  // Helper method to choose between unselected SVG and selected PNG
+  // This helper method chooses between the selected and unselected SVG based on the index
+  Widget _buildSvgIcon(String defaultSvg, String selectedSvg, int index, double size) {
+
+    return SvgPicture.asset(
+      _currentIndex == index ? selectedSvg : defaultSvg,
+      color: _currentIndex == index ? const Color.fromRGBO(238, 66, 116, 1) : Colors.grey, // Optional: tint color based on selection
+      width: size,
+      height: size,
+    );
+  }
   Widget _buildIcon(String svgAsset, String pngAsset, int index, double size) {
     if (_currentIndex == index) {
       // Display PNG when selected
@@ -79,7 +88,7 @@ class _BottomNavState extends State<BottomNav> {
         svgAsset,
         width: size,
         height: size,
-        color: Colors.grey, // Tint unselected SVG
+        color: Colors.grey, // Optional: Tint unselected SVG
       );
     }
   }

@@ -84,7 +84,7 @@ class Signup extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Handle navigation to the next screen
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const BottomNav()));
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:pulse/Screens/EventDetail.dart';
 
 class Mapscreen extends StatelessWidget {
   const Mapscreen({super.key});
@@ -21,10 +22,15 @@ class Mapscreen extends StatelessWidget {
         point: position,
         width: 60,
         height: 60,
-        child: const Icon(
-          Icons.location_pin,
-          size: 60,
-          color: Colors.red, // Set a color for your markers
+        child: GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const EventDetailsPage()));
+          },
+          child: const Icon(
+            Icons.location_pin,
+            size: 60,
+            color: Colors.red, // Set a color for your markers
+          ),
         ),
       );
     }).toList();

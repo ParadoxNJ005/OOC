@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pulse/BottomNav/BottomNav.dart';
 import 'package:pulse/Screens/HomeScreen.dart';
 import 'package:pulse/Screens/LogIn.dart';
 

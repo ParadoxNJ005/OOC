@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pulse/Screens/EventDetail.dart';
 import 'package:pulse/Screens/HomeScreen.dart';
 import 'package:pulse/Screens/SignUp.dart';
+import 'package:pulse/Screens/TimeLine.dart';
 
 import 'Screens/SplashScreen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SplashScreen(),
+      home: Timeline(),
     );
   }
 }

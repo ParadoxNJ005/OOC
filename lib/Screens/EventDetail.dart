@@ -8,6 +8,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pulse/Screens/MapScreen.dart';
 import 'package:share_plus/share_plus.dart';
 
 class EventDetailsPage extends StatefulWidget {
@@ -363,17 +364,22 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                               ),
                             ),
                             const SizedBox(height: 15),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10), // Set the border radius
-                              child: Container(
-                                width: double.infinity,
-                                height: 200,
-                                // margin: EdgeInsets.symmetric(horizontal: 10),
-                                child: Image.asset(
-                                  "assets/images/mpa.png", // Specify your image path
-                                  height: double.infinity, // Set the desired height
-                                  width: double.infinity, // Set the desired width
-                                  fit: BoxFit.cover, // Adjust the image to cover the box
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (_)=>Mapscreen()));
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10), // Set the border radius
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 200,
+                                  // margin: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Image.asset(
+                                    "assets/images/mpa.png", // Specify your image path
+                                    height: double.infinity, // Set the desired height
+                                    width: double.infinity, // Set the desired width
+                                    fit: BoxFit.cover, // Adjust the image to cover the box
+                                  ),
                                 ),
                               ),
                             ),

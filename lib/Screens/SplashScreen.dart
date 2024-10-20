@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pulse/Screens/OnboardingScreen.dart';
 import 'package:video_player/video_player.dart';
 import 'HomeScreen.dart';
 
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (_controller.value.position == _controller.value.duration) {
         // Video has completed, navigate to the HomeScreen
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const OnboardingScreen()),
         );
       }
     });

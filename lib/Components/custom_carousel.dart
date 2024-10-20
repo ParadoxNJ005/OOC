@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:pulse/Screens/EventDetail.dart';
 
 import '../models/artists.dart';
 
@@ -46,7 +47,7 @@ class CustomCarouselSlider extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     // log("hello reel url :  ${data[index].reels}");
-                    // Navigator.push(context, MaterialPageRoute(builder: (_)=>Detailcard(videoUrl: data[index].reels, title: data[index].name, des: data[index].desc, venue: data[index].venue,)));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>EventDetailsPage()));
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16), // Apply rounded corners to the image itself
@@ -131,9 +132,9 @@ class CustomCarouselSlider extends StatelessWidget {
           aspectRatio: 20 / 5,
           reverse: false,
           initialPage: 0,
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 3),
-          autoPlayAnimationDuration: Duration(milliseconds: 1000),
+          autoPlay: false,
+          // autoPlayInterval: Duration(seconds: 3),
+          // autoPlayAnimationDuration: Duration(milliseconds: 1000),
           enlargeCenterPage: true,
           scrollDirection: Axis.horizontal,
         ),

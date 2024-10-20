@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,43 +83,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            // Rest of the UI goes here (like the cards and event listings)
+            // Carousel and Event listings
             Positioned(
-              top: 100,
+              top: 120,
               left: 16,
               right: 16,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CustomCarouselSlider(data: events),
+                  const SizedBox(height: 30),
+                  const Text(
+                    "Planned",
+                    style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
                   const SizedBox(height: 10),
-                  CustomCarouselSlider(data: events)
+                  SizedBox(
+                    height: 200,  // Define height for the ListView
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal, // Assuming horizontal scrolling
+                      itemCount: planned.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: EventCard(
+                            imageUrl: planned[index]["image"]!,
+                            title: planned[index]["name"]!,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
-            Positioned(
-              top: 450,
-              left: 26,
-              right: 16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  Text("Planned" , style: TextStyle(color: Colors.white ,fontSize: 30 , fontWeight: FontWeight.bold),)
-                ],
-              ),
-            ),
-            // Positioned(
-            //   top: 500,
-            //   left: 16,
-            //   right: 16,
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       const SizedBox(height: 10),
-            //       SocietyCarousel(data: events)
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -141,11 +137,11 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      width: 150,  // Adjust card width
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          image: AssetImage(imageUrl),
+          image: NetworkImage(imageUrl),  // Use NetworkImage for URL
           fit: BoxFit.cover,
         ),
       ),
@@ -166,7 +162,7 @@ class EventCard extends StatelessWidget {
           Positioned(
             top: 10,
             right: 10,
-            child: Icon(Icons.bookmark_border, color: Colors.white),
+            child: const Icon(Icons.bookmark_border, color: Colors.white),
           ),
         ],
       ),

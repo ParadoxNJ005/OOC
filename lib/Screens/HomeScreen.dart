@@ -10,7 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Map<String, String>> events = [
+  List<int> color = [0,0,0];
+  final List<Map<String, String>> events = [
     {
       "name": "Effe'24",
       "image": "https://firebasestorage.googleapis.com/v0/b/fffc-5725a.appspot.com/o/image%202%20(1).png?alt=media&token=fdc4e5e7-94b5-4d86-8aed-957d5bd05ed9"
@@ -18,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       "name": "Antaragni",
       "image": "https://firebasestorage.googleapis.com/v0/b/fffc-5725a.appspot.com/o/image%203%20(1).png?alt=media&token=6b3df03e-add3-4320-bee6-c6af632dbc5d"
-    }
+    },
   ];
 
-  List<Map<String, String>> planned = [
+  final List<Map<String, String>> planned = [
     {
       "name": "Effe'24",
       "image": "https://firebasestorage.googleapis.com/v0/b/fffc-5725a.appspot.com/o/image%202%20(1).png?alt=media&token=fdc4e5e7-94b5-4d86-8aed-957d5bd05ed9"
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       "name": "Antaragni",
       "image": "https://firebasestorage.googleapis.com/v0/b/fffc-5725a.appspot.com/o/image%203%20(1).png?alt=media&token=6b3df03e-add3-4320-bee6-c6af632dbc5d"
-    }
+    },
   ];
 
   @override
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               top: 70,
               left: 16,
-              right: 16,
+              right: 76,
               child: Opacity(
                 opacity: 0.5,
                 child: Container(
@@ -77,15 +78,47 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 70,
               right: 16,
               child: IconButton(
-                icon: const Icon(Icons.filter_alt, color: Colors.white),
+                icon: const Icon(Icons.filter_alt_outlined, size: 36, color: Colors.white),
                 onPressed: () {
                   // Filter button logic here
                 },
               ),
             ),
+            Positioned(
+              top: 150,
+              right: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("All Categories", style: TextStyle(color: Colors.white, fontSize: 15)),
+                    const Text("View all", style: TextStyle(color: Colors.white, fontSize: 15)),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 190,
+              left: 16,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Tile(Icon(Icons.star, color: Colors.blue), "Today",0),
+                    SizedBox(width: 10,),
+                    Tile(Icon(Icons.star, color: Colors.blue), "Sport",1),
+                    SizedBox(width: 10,),
+                    Tile(Icon(Icons.star, color: Colors.blue), "Concert",2),
+
+                    // Add more tiles as needed
+                  ],
+                ),
+              ),
+            ),
             // Carousel and Event listings
             Positioned(
-              top: 120,
+              top: 250,
               left: 16,
               right: 16,
               child: Column(
@@ -99,9 +132,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   SizedBox(
-                    height: 200,  // Define height for the ListView
+                    height: 200, // Define height for the ListView
                     child: ListView.builder(
-                      scrollDirection: Axis.horizontal, // Assuming horizontal scrolling
+                      scrollDirection: Axis.horizontal,
                       itemCount: planned.length,
                       itemBuilder: (context, index) {
                         return Padding(
@@ -137,11 +170,11 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,  // Adjust card width
+      width: 150, // Adjust card width
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          image: NetworkImage(imageUrl),  // Use NetworkImage for URL
+          image: NetworkImage(imageUrl), // Use NetworkImage for URL
           fit: BoxFit.cover,
         ),
       ),
@@ -168,4 +201,34 @@ class EventCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget Tile(Icon icon, String title,int i) {
+  return Container(
+    padding: const EdgeInsets.all(8.0), // Add padding around the tile
+    decoration: BoxDecoration(
+      color: Colors.white, // Set background color
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black26,
+          blurRadius: 4,
+          offset: const Offset(0, 2), // Adjust shadow position
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        icon, // Place the icon directly
+        const SizedBox(width: 8), // Add space between icon and text
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16, // Adjust font size
+            fontWeight: FontWeight.w500, // Set font weight
+          ),
+        ),
+      ],
+    ),
+  );
 }

@@ -7,6 +7,7 @@ import 'package:pulse/Screens/EventDetail.dart';
 import 'package:pulse/Screens/HomeScreen.dart';
 import 'package:pulse/Screens/ReelsPage.dart';
 import 'package:pulse/Screens/TimeLine.dart';
+import 'package:pulse/Screens/profile.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -20,8 +21,8 @@ class _BottomNavState extends State<BottomNav> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
+    ProfileScreen(),
     const Timeline(),
-    const HomeScreen(),
     const ReelPage(),
     const EventDetailsPage(),
   ];

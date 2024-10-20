@@ -73,33 +73,41 @@ class Timeline extends StatelessWidget {
             ],
           ),
         ),
-        child: Column(
-          children: [
-            SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Upcoming",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.chevron_right, color: Colors.white, size: 28),
-                  ),
-                ],
+        child: SingleChildScrollView( // Added scrolling for the whole page
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                child: Image.asset("assets/images/man.png", fit: BoxFit.contain),
               ),
-            ),
-            Expanded( // This allows the list to take remaining space and scroll
-              child: Padding(
+              SizedBox(height: 40),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Upcoming",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.chevron_right, color: Colors.white, size: 28),
+                    ),
+                  ],
+                ),
+              ),
+              // Padding for list spacing
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(), // Disable inner scrolling
+                  shrinkWrap: true, // Makes the ListView take the height of its content
                   itemCount: events.length, // Number of events from JSON
                   itemBuilder: (context, index) {
                     final event = events[index];
@@ -159,7 +167,7 @@ class Timeline extends StatelessWidget {
                             // Right section: Event card
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
+                                padding: const EdgeInsets.only(left: 16.0, bottom: 26.0),
                                 child: EventCard(
                                   title: event['name'],
                                   imageUrl: event['imageUrl'],
@@ -174,8 +182,8 @@ class Timeline extends StatelessWidget {
                   },
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -210,12 +218,12 @@ class EventCard extends StatelessWidget {
           Image.network(
             imageUrl,
             fit: BoxFit.cover,
-            height: 150,
+            height: 200,
             width: double.infinity,
           ),
           // Gradient overlay for better text readability
           Container(
-            height: 150,
+            height: 200,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -273,11 +281,11 @@ class DashedLinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
       ..color = Colors.white
-      ..strokeWidth = 2;
+      ..strokeWidth = 4;
 
-    var max = size.height;
-    var dashWidth = 5;
-    var dashSpace = 3;
+    var max = size.height+50;
+    var dashWidth = 20;
+    var dashSpace = 12;
     double startY = 0;
 
     while (startY < max) {

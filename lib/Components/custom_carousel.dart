@@ -70,7 +70,7 @@ class CustomCarouselSlider extends StatelessWidget {
                             title,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 40,
+                              fontSize: 35,
                               fontWeight: FontWeight.bold,
                               shadows: [
                                 Shadow(
@@ -89,7 +89,7 @@ class CustomCarouselSlider extends StatelessWidget {
                             subtitle,
                             style: TextStyle(
                               color: Colors.red,
-                              fontSize: 25,
+                              fontSize: 20,
                               shadows: [
                                 Shadow(
                                   blurRadius: 5.0,
@@ -107,7 +107,7 @@ class CustomCarouselSlider extends StatelessWidget {
                             description,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 15,
                               shadows: [
                                 Shadow(
                                   blurRadius: 5.0,

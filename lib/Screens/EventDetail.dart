@@ -1,291 +1,238 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Eventdetail extends StatefulWidget {
-  final String image;
-  final String title;
-  final String des;
-  final String venue;
-
-  const Eventdetail({super.key, required this.image, required this.title, required this.des, required this.venue});
-
-
-  @override
-  _Eventdetail createState() => _Eventdetail();
-}
-
-class _Eventdetail extends State<Eventdetail> {
-  bool _isLoading = false;
-
-  Future<void> _fetchParticipants() async {
-    // setState(() {
-    //   _isLoading = true; // Start the loader
-    // });
-    //
-    // try {
-    //   await APIs.test();
-    // } catch (e) {
-    //   // Handle any errors if needed
-    // } finally {
-    //   setState(() {
-    //     _isLoading = false; // Stop the loader
-    //   });
-    // }
-  }
-
+class EventDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // Top Background Image (half screen)
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            height: MediaQuery.of(context).size.height * 0.5, // Cover top half
-            child: Image.network(
-              widget.image,
-              fit: BoxFit.cover,
-            ),
-          ),
-          // Bottom Black Background (half screen)
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.5,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              color: Colors.black,
-            ),
-          ),
-          // Back button and icons
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
-                    onPressed: () => Navigator.of(context).pop(),
-                    color: Colors.black54,
-                  ),
-                  // Favorite and Share Icons
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.favorite_border, color: Colors.white),
-                        onPressed: () {},
+          // Main content scrollable
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Event banner with image and overlay text
+                Stack(
+                  children: [
+                    // Event banner image
+                    Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZaveVo0bLYyuTqtTllv9IZXwxS_3MxsiBCQ&s', // Replace with actual image URL
+                      height: 492,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                    // Gradient overlay on the image
+                    Container(
+                      height: 492,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.black.withOpacity(0.5),
+                            Colors.transparent,
+                          ],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                        ),
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.share, color: Colors.white),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // Event Details Container
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.8),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Event Title and Date
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+
+                    // Back and share icons at the top left and top right
+                    Positioned(
+                      top: 50,
+                      left: 16,
+                      right: 16, // Ensures both icons are aligned with padding
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            'SHOW',
-                            style: TextStyle(
-                              color: Colors.white54,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                          InkWell(
+                            onTap: () {
+                              // Define your action here
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey[800]?.withOpacity(0.4), // Semi-transparent background
+                                shape: BoxShape.circle, // Circular shape
+                              ),
+                              padding: const EdgeInsets.all(12), // Adjust padding for the size of the button
+                              child: const Icon(
+                                Icons.keyboard_arrow_left,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
+                          InkWell(
+                            onTap: () {
+                              // Define your action here
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey[800]?.withOpacity(0.4), // Semi-transparent background
+                                shape: BoxShape.circle, // Circular shape
+                              ),
+                              padding: const EdgeInsets.all(12), // Adjust padding for the size of the button
+                              child: const Icon(
+                                Icons.ios_share,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    // Event title and details at the bottom of the image
+                    Positioned(
+                      bottom: 30,
+                      left: 16,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Event title
                           Text(
-                            widget.title,
-                            style: const TextStyle(
+                            "A Summer Story",
+                            style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 28,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const Text(
-                            'Starting 9:10 PM',
-                            style: TextStyle(
-                              color: Colors.white54,
-                              fontSize: 16,
-                            ),
+                          const SizedBox(height: 8),
+
+                          // Event date
+                          Row(
+                            children: const [
+                              Icon(Icons.calendar_today_outlined, color: Colors.white),
+                              SizedBox(width: 4),
+                              Text(
+                                "23-24 June, 20:00",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 4),
+
+                          // Event location
+                          Row(
+                            children: const [
+                              Icon(Icons.location_on_outlined, color: Colors.white),
+                              SizedBox(width: 4),
+                              Text(
+                                "Baku, 183 Nizami str",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      // Date Box
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.purpleAccent,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Column(
+                    ),
+                  ],
+                ),
+
+                // Event details section in a card-like layout
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Event organizer info with follow button
+                        Row(
                           children: [
-                            Text(
-                              'DEC',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            const CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZaveVo0bLYyuTqtTllv9IZXwxS_3MxsiBCQ&s'), // Replace with actual image
+                              radius: 20,
                             ),
-                            Text(
-                              '21',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                            const SizedBox(width: 8),
+                            const Text(
+                              "Carnival",
+                              style: TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                            const SizedBox(width: 4),
+                            Text("10.5k followers",
+                                style: TextStyle(color: Colors.grey[500])),
+                            const Spacer(),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.pinkAccent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                               ),
+                              child: const Text("Follow"),
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  // About and Participants Buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // About Button
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        const SizedBox(height: 16),
+                        const Divider(color: Colors.grey),
+                        const SizedBox(height: 8),
+
+                        // About this event section
+                        Text(
+                          "About this event",
+                          style: GoogleFonts.poppins(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                          child: Text('ABOUT', style: TextStyle(color: Colors.black)),
                         ),
-                      ),
-                      SizedBox(width: 16),
-                      // Participants Button with Loader
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: _isLoading ? null : _fetchParticipants, // Disable if loading
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF1D1D1D),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod commodo eros vel dapibus. Integer ipsum nibh, ornare in maximus vel, egestas at purus.",
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                        const SizedBox(height: 16),
+                        const Divider(color: Colors.grey),
+
+                        // Information section
+                        Text(
+                          "Information",
+                          style: GoogleFonts.poppins(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                          child: _isLoading
-                              ? const CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
-                          )
-                              : const Text('Participants', style: TextStyle(color: Colors.grey)),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  // Event Description and other UI elements
-                  Text(
-                    widget.des,
-                    style: const TextStyle(color: Colors.white70, fontSize: 20),
-                  ),
-                  const SizedBox(height: 20),
-                  // Location Section
-                  Text(
-                    widget.venue,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const SizedBox(height: 20),
-                  // Price and Buy Ticket Section
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // const Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   children: [
-                        //     Text(
-                        //       'PRICE',
-                        //       style: TextStyle(
-                        //         color: Colors.white54,
-                        //         fontSize: 14,
-                        //       ),
-                        //     ),
-                        //     Text(
-                        //       '\$17.60/person',
-                        //       style: TextStyle(
-                        //         color: Colors.white,
-                        //         fontSize: 22,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        // ElevatedButton(
-                        //   onPressed: () {},
-                        //   style: ElevatedButton.styleFrom(
-                        //     backgroundColor: Colors.purpleAccent,
-                        //     shape: RoundedRectangleBorder(
-                        //       borderRadius: BorderRadius.circular(20),
-                        //     ),
-                        //   ),
-                        //   child: const Row(
-                        //     children: [
-                        //       Text('BUY A TICKET'),
-                        //       SizedBox(width: 5),
-                        //       Icon(Icons.add_shopping_cart),
-                        //     ],
-                        //   ),
-                        // ),
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration:BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                          color: const Color(0xffFFD5D8),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: const [
+                            Icon(Icons.access_time_outlined, color: Colors.white),
+                            SizedBox(width: 8),
+                            Text("Starts: 20:00", style: TextStyle(color: Colors.grey)),
+                          ],
                         ),
-                        ElevatedButton(onPressed: (){},
-                            style: ButtonStyle(
-                              backgroundColor: Color(0xffFFD5D8)
-                            ),
-                            child: const Text('BOOK'))
+                        const SizedBox(height: 8),
+                        Row(
+                          children: const [
+                            Icon(Icons.person, size: 16, color: Colors.white),
+                            SizedBox(width: 8),
+                            Text("Age: 18+", style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: const [
+                            Icon(Icons.group_outlined, color: Colors.white),
+                            SizedBox(width: 8),
+                            Text("Limit: max 14000 participants", style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                        const SizedBox(height: 32),
+                        Text('Location',style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),),
+
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

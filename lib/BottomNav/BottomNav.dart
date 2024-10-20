@@ -16,7 +16,7 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
 
   final List<Widget> _pages = [
     const HomeScreen(),
@@ -40,19 +40,19 @@ class _BottomNavState extends State<BottomNav> {
         selectedIndex: _currentIndex,
         items: [
           BottomBarItem(
-            iconBuilder: (color) => _buildSvgIcon("assets/images/a.svg", "assets/images/a.svg", 0, 34),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/home.svg", "assets/images/home.svg", 0, 25),
           ),
           BottomBarItem(
-            iconBuilder: (color) => _buildSvgIcon("assets/images/b.svg", "assets/images/b.svg", 1, 30),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/reels.svg", "assets/images/reels.svg", 1, 25),
           ),
           BottomBarItem(
-            iconBuilder: (color) => _buildIcon("assets/images/c.svg", "assets/images/c.svg", 2, 37),
+            iconBuilder: (color) => _buildIcon("assets/images/pin.svg", "assets/images/pin.svg", 2, 25),
           ),
           BottomBarItem(
-            iconBuilder: (color) => _buildSvgIcon("assets/images/b.svg", "assets/images/b.svg" , 3, 25),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/a.svg", "assets/images/a.svg" , 3, 25),
           ),
           BottomBarItem(
-            iconBuilder: (color) => _buildSvgIcon("assets/images/a.svg", "assets/images/a.svg", 4, 34),
+            iconBuilder: (color) => _buildSvgIcon("assets/images/b.svg", "assets/images/b.svg", 4, 25),
           ),
         ],
         circle1Color: Colors.blueAccent,

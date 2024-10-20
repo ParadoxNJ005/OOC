@@ -19,6 +19,7 @@ class EventDetailsPage extends StatefulWidget {
 }
 
 class _EventDetailsPageState extends State<EventDetailsPage> {
+  final GlobalKey _cardKey = GlobalKey();
   String message = "🌟 You're invited to our exciting event this Friday at 6 PM! 🎉 Join us for a night of fun, laughter, and great company. 🎈 We'll have games, food, and surprises! 🍕🥳 Don't miss out on the chance to make unforgettable memories! See you there! 🎊✨";
   GlobalKey _repaintKey = GlobalKey(); // To capture the widget
 
@@ -61,6 +62,25 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       print(e);
     }
   }
+
+  Future<void> expo() async {
+    try {
+      if (_cardKey.currentContext != null) {
+        RenderRepaintBoundary boundary = _cardKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+        var image = await boundary.toImage();
+        ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
+        Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+        // Export the captured image as a PDF
+        await _exportToPdf(pngBytes);
+      } else {
+        print("Error: Card key context is not available.");
+      }
+    } catch (e) {
+      print("Exception caught during export: $e");
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +321,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                                     width: 150,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        // Define your onPressed action here
+                                          expo();
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Color(0xFF4655).withOpacity(0.5), // Red background with opacity
@@ -311,7 +331,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                                         // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Adjust padding as needed
                                       ),
                                       child: Text(
-                                        'Pin',
+                                        'Book ',
                                         style: TextStyle(
                                           color: Colors.white, // White text color
                                           fontSize: 20, // Adjust font size as needed
@@ -396,4 +416,17 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       ),
     );
   }
+  Widget buildCustomCard() {
+    return RepaintBoundary(
+      key: _cardKey,
+      child: Card(
+        child: Container(
+          child: Image.asset(
+            "assets/images/ticket.png"
+          ),
+        ),
+      ),
+    );
+  }
+
 }

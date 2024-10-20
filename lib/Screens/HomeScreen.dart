@@ -118,14 +118,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             // Carousel and Event listings
             Positioned(
-              top: 250,
+              top: 230,
               left: 16,
               right: 16,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomCarouselSlider(data: events),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   const Text(
                     "Planned",
                     style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),

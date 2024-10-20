@@ -284,10 +284,8 @@ class EventSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: ListTile(
-              leading: Image.network(
-                'https://via.placeholder.com/50', // replace with event image
-                width: 50,
-                height: 50,
+              leading: Image.asset(
+                "assets/images/mm.png",
                 fit: BoxFit.cover,
               ),
               title: Text(

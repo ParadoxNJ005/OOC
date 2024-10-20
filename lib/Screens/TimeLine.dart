@@ -10,49 +10,49 @@ class Timeline extends StatelessWidget {
       "day": "THU",
       "date": "12",
       "name": "Effervescence 2024",
-      "imageUrl": "https://linktr.ee/og/image/Effervescence24.jpg"
+      "imageUrl": "assets/images/oo.png"
     },
     {
       "day": "FRI",
       "date": "13",
       "name": "Antrangi 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGUXfIP7VVLzcF6m8w40Fp9QPosbql4E5MQ&s"
+      "imageUrl": "assets/images/pp.png"
     },
     {
       "day": "SAT",
       "date": "14",
       "name": "Rangmanch 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKcz2JFgdMWNwMae74C2fKxoBfK-JwleFEpw&s"
+      "imageUrl": "assets/images/oo.png"
     },
     {
       "day": "SUN",
       "date": "15",
       "name": "Tech Fiesta 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1RIWnHvkqmc6nVl7f7inzNozcxbPvUsxiw&s"
+      "imageUrl": "assets/images/pp.png"
     },
     {
       "day": "THU",
       "date": "12",
       "name": "Effervescence 2024",
-      "imageUrl": "https://linktr.ee/og/image/Effervescence24.jpg"
+      "imageUrl": "assets/images/oo.png"
     },
     {
       "day": "FRI",
       "date": "13",
       "name": "Antrangi 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGUXfIP7VVLzcF6m8w40Fp9QPosbql4E5MQ&s"
+      "imageUrl": "assets/images/pp.png"
     },
     {
       "day": "SAT",
       "date": "14",
       "name": "Rangmanch 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKcz2JFgdMWNwMae74C2fKxoBfK-JwleFEpw&s"
+      "imageUrl": "assets/images/oo.png"
     },
     {
       "day": "SUN",
       "date": "15",
       "name": "Tech Fiesta 2024",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1RIWnHvkqmc6nVl7f7inzNozcxbPvUsxiw&s"
+      "imageUrl": "assets/images/pp.png"
     }
   ]
   ''';
@@ -215,7 +215,7 @@ class EventCard extends StatelessWidget {
       child: Stack(
         children: [
           // Event Image
-          Image.network(
+          Image.asset(
             imageUrl,
             fit: BoxFit.cover,
             height: 200,

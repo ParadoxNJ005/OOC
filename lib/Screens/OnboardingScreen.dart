@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pulse/Screens/HomeScreen.dart';
+import 'package:pulse/Screens/SignUp.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -11,7 +12,7 @@ class OnboardingScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const HomeScreen())
+              MaterialPageRoute(builder: (context) => const Signup())
           );
         },
         child: const Icon(Icons.chevron_right),

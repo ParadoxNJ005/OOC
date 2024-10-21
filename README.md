@@ -1,7 +1,7 @@
-![profile](https://github.com/user-attachments/assets/a40c13e7-8ba3-4e1b-ab92-3aa8840eaea6)![profile](https://github.com/user-attachments/assets/a8370aad-57d3-4be4-882d-d7d22a7ac619)![maps](https://github.com/user-attachments/assets/69b2eeaf-74db-43de-b179-aa34a3738ca2)#Pulse(The  Event App)
+##Pulse(The  Event App)
 A user-friendly platform designed to keep you updated on local events, where you can discover, post, and share live events happening in your area, fostering real-time community connections.
 
-#Features
+##Features
 Discover Local Events: Easily find events near you with an intuitive map view and event filters.
 
 Post and Share Events: Create and share your own events with the community, encouraging more engagement.
@@ -14,14 +14,14 @@ Interactive Map: Visualize event locations on a map for easy navigation.
 
 Community Engagement: Encourages interaction with local culture and community activities.
 
-#Tech Stack
+##Tech Stack
 
 Frontend: Flutter for a seamless mobile experience.
 Database: Firebase for real-time data synchronization.
 Maps Integration: Google Maps API for interactive location-based event browsing.
 Notifications: Firebase Cloud Messaging for instant event updates.
 
-#Installation
+##Installation
 
 Clone the Repository:
 
